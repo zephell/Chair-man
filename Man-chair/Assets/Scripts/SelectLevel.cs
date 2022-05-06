@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SelectLevel : MonoBehaviour {
@@ -10,6 +11,9 @@ public class SelectLevel : MonoBehaviour {
 	public float sensitivity = 0.25f;
 	public float limit = 80;
 	public float zoom = 0.25f;
+
+	public UnityEvent onClick;
+
 	private float X, Y;
 
 	void Start () 
@@ -36,20 +40,20 @@ public class SelectLevel : MonoBehaviour {
             {
                 if (hit.collider.tag == "The best country - Russia")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
                 if (hit.collider.tag == "USA")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
 				if (hit.collider.tag == "France")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
 				else if(hit.collider == null)
                 {
-                    Debug.LogError("Don't clickable");
-                }
+					onClick.Invoke();
+				}
             }
         }
 	}
