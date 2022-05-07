@@ -14,19 +14,19 @@ public class EventsManager : MonoBehaviour
     int equippedSkin;
     int previousEquippedSkin;
 
-    /*private void Awake()
+    private void Awake()
     {
-        boughtSkins = PlayerPrefs.GetString("Bought_Skins");
+        boughtSkins = PlayerPrefs.GetString("Bought_Skins_Id");
         equippedSkin = PlayerPrefs.GetInt("Equipped_Skin_Id");
 
         OnBoughtSkinsUpdated?.Invoke(boughtSkins);
         OnEquippedSkinUpdated?.Invoke(equippedSkin);
-    }*/
+    }
 
     void FixedUpdate()
     {
         //Call OnBought event when bought skins are updated
-        boughtSkins = PlayerPrefs.GetString("Bought_Skins");
+        boughtSkins = PlayerPrefs.GetString("Bought_Skins_Id");
         if (boughtSkins != previousBoughtSkins)
         {
             OnBoughtSkinsUpdated?.Invoke(boughtSkins);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tualet
   m_EditorClassIdentifier: 
   name: "\u0423\u043D\u0438\u0442\u0430\u0437"
-  id: 6
+  id: 7
   cost: 120
   icon: {fileID: 21300000, guid: 19c014ebc673e374db02e5917d1e3ff2, type: 3}
   skinModel: {fileID: 2438825574980583114, guid: 020559927ee4f78459115081cd6428d8,

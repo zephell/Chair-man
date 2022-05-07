@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pufik
   m_EditorClassIdentifier: 
   name: "\u041F\u0443\u0444\u0438\u043A"
-  id: 3
+  id: 4
   cost: 100
   icon: {fileID: 21300000, guid: bd42e4d4630b15a4189983ebc943790f, type: 3}
   skinModel: {fileID: 7529023077544821989, guid: 8d98d988be9c2c243a36f4fdd444e2a5,

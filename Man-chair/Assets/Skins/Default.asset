@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   name: "\u041E\u0444\u0438\u0441\u043D\u044B\u0439 \u0441\u0442\u0443\u043B"
-  id: 0
+  id: 1
   cost: 0
   icon: {fileID: 21300000, guid: 6181d2dab855cf94b8f4e43e0566e7e6, type: 3}
   skinModel: {fileID: 7620711672933977279, guid: 6df87e76e558ba0418c229eb12c4afde,

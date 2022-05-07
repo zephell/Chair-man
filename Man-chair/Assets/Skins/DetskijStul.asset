@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DetskijStul
   m_EditorClassIdentifier: 
   name: "\u0414\u0435\u0442\u0441\u043A\u0438\u0439 \u0441\u0442\u0443\u043B\u044C\u0447\u0438\u043A"
-  id: 1
+  id: 2
   cost: 80
   icon: {fileID: 21300000, guid: 87b0c0c461c98b54cb1529574819fdfc, type: 3}
   skinModel: {fileID: 6378446374470311865, guid: 25d4df9e3130f6b4caea5931971934ed,

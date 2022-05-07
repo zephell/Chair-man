@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("Equipped_Skin_Id", 0);
         PlayerPrefs.SetInt("Last_lvl", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.Save();
         mainCamera = Camera.main;
@@ -79,16 +78,16 @@ public class PlayerController : MonoBehaviour
             boostTimer -= Time.fixedDeltaTime; //отнимаем дельту времени для таймера
             currentForce = forwardForce * forwardBoostMult; //Текущая сила будет передня сила умноженая на умножитель буста 
 
-            foreach (var item in speedParticles)
-                item.SetActive(true);
+            //foreach (var item in speedParticles)
+            //    item.SetActive(true);
         }
         else
         {
             boosted = false; //Таймер меньше 0 выключаем буст
             currentForce = forwardForce; //Делаем стандартною скорость
 
-            foreach (var item in speedParticles)
-                item.SetActive(false);
+            //foreach (var item in speedParticles)
+            //    item.SetActive(false);
         }
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Taburet
   m_EditorClassIdentifier: 
   name: "\u0422\u0430\u0431\u0443\u0440\u0435\u0442\u043A\u0430"
-  id: 4
+  id: 5
   cost: 50
   icon: {fileID: 21300000, guid: a6af44e6f826d574a97fcb7f568ebf3e, type: 3}
   skinModel: {fileID: 6307853195260487781, guid: 6d3d29bd3b4d5e040b4e1602af4df0fd,

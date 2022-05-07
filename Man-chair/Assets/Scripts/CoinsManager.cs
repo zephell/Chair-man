@@ -4,10 +4,6 @@ using TMPro;
 public  class CoinsManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text coinsText;
-    [SerializeField] private PlayerController player;
-
-    [Header("Skins")]
-    [SerializeField] private GameObject[] skins;
 
     private int previousCoinsCount;
 
@@ -20,12 +16,6 @@ public  class CoinsManager : MonoBehaviour
             UpdateCoinsUI();
         }
         previousCoinsCount = coinsCount;
-    }
-
-    private void Start()
-    {
-        PlayerPrefs.SetInt("Coins", 100);
-        PlayerPrefs.Save();
     }
 
     private void UpdateCoinsUI()

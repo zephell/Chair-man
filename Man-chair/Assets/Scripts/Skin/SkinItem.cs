@@ -39,11 +39,25 @@ public class SkinItem : MonoBehaviour
             skinState = SkinState.Bought;
 
         EventsManager.OnEquippedSkinUpdated += OnEquippedSkinUpdated;
+        EventsManager.OnBoughtSkinsUpdated += OnBoughtSkinsUpdated;
     }
 
     private void OnDisable()
     {
         EventsManager.OnEquippedSkinUpdated -= OnEquippedSkinUpdated;
+        EventsManager.OnBoughtSkinsUpdated -= OnBoughtSkinsUpdated;
+    }
+
+    public void OnBoughtSkinsUpdated(string obj)
+    {
+        if(!obj.Contains(skinProps.id.ToString()))
+        {
+            skinState = SkinState.NotPurchased;
+        }
+        else
+        {
+            skinState = SkinState.Bought;
+        }
     }
 
     public void OnEquippedSkinUpdated(int id)

@@ -8,10 +8,9 @@ public class SkinManager : MonoBehaviour
 
     private void Awake()
     {
-        GameObject obj = GetSkin(PlayerPrefs.GetInt("Equipped_Skin_Id")).skinModel;
+        /*GameObject obj = GetSkin(PlayerPrefs.GetInt("Equipped_Skin_Id")).skinModel;
         GameObject newObj = Instantiate(obj, transform.position, transform.rotation);
-        newObj.transform.parent = transform;
-
+        newObj.transform.parent = transform;*/
         EventsManager.OnEquippedSkinUpdated += OnEquippedSkinUpdated;
     }
 
