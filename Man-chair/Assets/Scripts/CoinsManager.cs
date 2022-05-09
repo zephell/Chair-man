@@ -1,37 +1,25 @@
 using UnityEngine;
 using TMPro;
 
-public class CoinsManager : MonoBehaviour
+public  class CoinsManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text coinsText;
-    [SerializeField] private PlayerController player;
 
-    [Header("Skins")]
-    [SerializeField] private Mesh[] skins;
+    private int previousCoinsCount;
 
-    private int coins;
-
-    public int idSelectedSkin;
-
-
-    private void Start()
+    private void FixedUpdate()
     {
-        idSelectedSkin = PlayerPrefs.GetInt("Selected Skin");
-        player.SelectSkin(skins[idSelectedSkin]);
-        coins = PlayerPrefs.GetInt("Coins");
-        coinsText.text = coins.ToString();
+        int coinsCount = PlayerPrefs.GetInt("Coins");
+        if (coinsCount != previousCoinsCount)
+        {
+            //udate coins ui when coins count are changed
+            UpdateCoinsUI();
+        }
+        previousCoinsCount = coinsCount;
     }
 
-    public void BuySkin(int skinId)
+    private void UpdateCoinsUI()
     {
-        idSelectedSkin = skinId;
-        PlayerPrefs.SetInt("Selected Skin", skinId);
-        player.SelectSkin(skins[idSelectedSkin]);
-    }
-
-    public void UpdateCoins()
-    {
-        coins = PlayerPrefs.GetInt("Coins");
-        coinsText.text = coins.ToString();
+        coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 }

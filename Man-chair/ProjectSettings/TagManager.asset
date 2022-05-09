@@ -10,6 +10,8 @@ TagManager:
   - FxTemporaire
   - Coin
   - The best country - Russia
+  - France
+  - USA
   layers:
   - Default
   - TransparentFX

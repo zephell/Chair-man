@@ -7,16 +7,16 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        lastLvl = PlayerPrefs.GetInt("Last lvl");
+        lastLvl = PlayerPrefs.GetInt("Last_lvl");
         if (lastLvl == 0)
         {
-            lastLvl = 1;
+            lastLvl = 2;
         }
         LoadLevel();
     }
 
     private void LoadLevel()
     {
-        SceneManager.LoadSceneAsync(lastLvl);
+        SceneManager.LoadScene(lastLvl);
     }
 }

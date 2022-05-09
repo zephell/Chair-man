@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [Header("-----Player Settings-----")]
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fovChangeVelocity = 5f; //
 
     [Header("-----Other-----")]
+    [SerializeField] private Transform skinHolder;
     [SerializeField] private GameObject gameOverParticle;
     [SerializeField] private GameObject coinsParticles;
 
@@ -42,16 +42,14 @@ public class PlayerController : MonoBehaviour
     private float forwardForceForPause;
     private bool isPaused = false;
     private bool isVibrate = false;
-    private CoinsManager coinsMng;
 
 
-    private void Start()
+    private void Awake()
     {
-        PlayerPrefs.SetInt("Last lvl", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("Last_lvl", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.Save();
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>(); //get rigidbody
-        coinsMng = GameObject.Find("/Coins Manager").GetComponent<CoinsManager>();
 
         forwardForcePrivate = forwardForce;
         forwardForce = 0;
@@ -67,12 +65,6 @@ public class PlayerController : MonoBehaviour
         forwardForceForPause = forwardForcePrivate;
     }
 
-    public void SelectSkin(Mesh mesh)
-    {
-        Debug.Log("HI");
-    }
-
-
     private void FixedUpdate()
     {
         Vector3 touchMoveVector = new Vector3(touchField.TouchDist.x * speed, 0, 0); //create touch Vector
@@ -86,16 +78,16 @@ public class PlayerController : MonoBehaviour
             boostTimer -= Time.fixedDeltaTime; //отнимаем дельту времени для таймера
             currentForce = forwardForce * forwardBoostMult; //Текущая сила будет передня сила умноженая на умножитель буста 
 
-            foreach (var item in speedParticles)
-                item.SetActive(true);
+            //foreach (var item in speedParticles)
+            //    item.SetActive(true);
         }
         else
         {
             boosted = false; //Таймер меньше 0 выключаем буст
             currentForce = forwardForce; //Делаем стандартною скорость
 
-            foreach (var item in speedParticles)
-                item.SetActive(false);
+            //foreach (var item in speedParticles)
+            //    item.SetActive(false);
         }
     }
 
@@ -125,17 +117,6 @@ public class PlayerController : MonoBehaviour
         IsFall();
     }
 
-
-    public void AddCoins(int coinsCount)
-    {
-        int a = PlayerPrefs.GetInt("Coins");
-        a += coinsCount;
-        PlayerPrefs.SetInt("Coins", a);
-        PlayerPrefs.Save();
-        coinsMng.UpdateCoins();
-    }
-
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Speed Boost")
@@ -162,9 +143,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
         rb.AddRelativeTorque(0, 0, 2, ForceMode.Impulse);
 
-        var particle = Instantiate(coinsParticles, transform.position, Quaternion.identity);
+        Instantiate(coinsParticles, transform.position, Quaternion.identity);
 
-        AddCoins(1);
+        CoinsData.IncreaseCoinsCount(1);
     }
 
 
@@ -179,7 +160,9 @@ public class PlayerController : MonoBehaviour
         gameCanvas.gameObject.SetActive(false);
         var particle = Instantiate(gameOverParticle, transform.position, Quaternion.identity);
         StartCoroutine(Vibrate(2f));
+        StartCoroutine(Die(2f));
     }
+
 
 
     private IEnumerator CoffeeEquip(GameObject other)
@@ -222,8 +205,17 @@ public class PlayerController : MonoBehaviour
         isVibrate = false;
     }
 
+    private IEnumerator Die(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private void IsFall()
     {
-        if(transform.position.y <= -1) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (transform.position.y <= -1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

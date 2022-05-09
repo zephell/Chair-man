@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SelectLevel : MonoBehaviour {
@@ -10,6 +11,9 @@ public class SelectLevel : MonoBehaviour {
 	public float sensitivity = 0.25f;
 	public float limit = 80;
 	public float zoom = 0.25f;
+
+	public UnityEvent onClick;
+
 	private float X, Y;
 
 	void Start () 
@@ -30,25 +34,26 @@ public class SelectLevel : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.tag == "The best country - Russia")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
                 if (hit.collider.tag == "USA")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
 				if (hit.collider.tag == "France")
 				{
-					SceneManager.LoadScene("Loader");
+					onClick.Invoke();
 				}
-
-				else if (hit.collider.tag == "Untagged")
-                    Debug.LogError("Don't clickable");
+				else if(hit.collider == null)
+                {
+					onClick.Invoke();
+				}
             }
         }
 	}
