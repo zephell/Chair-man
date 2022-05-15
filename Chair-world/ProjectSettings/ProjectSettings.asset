@@ -907,11 +907,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: de3b4373-08ee-4068-9dec-269ef613894a
+  cloudProjectId: 7f9c9eb1-7691-4c4d-bbb0-30d3150eae4d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Man-chair (1)
-  organizationId: qonus
+  projectName: Chair-world
+  organizationId: nechaevvlad06
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
