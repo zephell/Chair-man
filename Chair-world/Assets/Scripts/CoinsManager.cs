@@ -7,5 +7,5 @@ public  class CoinsManager : MonoBehaviour
 
     private void Start() => CoinsData.OnCoinsValueChanged += UpdateCoinsUI;
 
-    private void UpdateCoinsUI(int coins) => coinsText.text = coins.ToString();
+    public void UpdateCoinsUI(int coins) => coinsText.text = coins.ToString();
 }

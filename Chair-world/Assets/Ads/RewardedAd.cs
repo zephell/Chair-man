@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
-using TMPro;
  
 public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -11,7 +10,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     private int coins = 0;
-    public TMP_Text coinText;
+    public CoinsManager coinsManager;
 
     void Awake()
     {   
@@ -57,8 +56,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             coins = PlayerPrefs.GetInt("Coins");
             coins += 25;
             PlayerPrefs.SetInt("Coins", coins);
+            coinsManager.UpdateCoinsUI(coins);
 
-            coinText.text = coins.ToString();
 
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
