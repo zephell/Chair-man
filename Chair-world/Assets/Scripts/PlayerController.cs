@@ -124,26 +124,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Speed Boost")
+        if (collision.gameObject.tag == "Paper")
         {
             SpeedBoost();
             Destroy(collision.gameObject);
         }
 
-        if(collision.gameObject.tag == "Coin")
-            CoinEquip(collision.gameObject);
+        if(collision.gameObject.tag == "Coin") CoinEquip(collision.gameObject);
         
-        if(collision.gameObject.tag == "Paper")
-            PaperEquip(collision);
+        if(collision.gameObject.tag == "Broken Cup") PaperEquip(collision);
 
-        if(collision.gameObject.tag == "Coffee")
-            StartCoroutine(CoffeeEquip(collision.gameObject));
+        if(collision.gameObject.tag == "Coffee") StartCoroutine(CoffeeEquip(collision.gameObject));
 
-        if (collision.CompareTag("Door"))
-            collision.GetComponent<DoorController>().Open();
+        if (collision.CompareTag("Door")) collision.GetComponent<DoorController>().Open();
 
-        if (collision.CompareTag("Finish"))
-            StartCoroutine(Finish(_finishDuration));
+        if (collision.CompareTag("Finish")) StartCoroutine(Finish(_finishDuration));
     }
 
 
