@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public  class CoinsManager : MonoBehaviour
+public class CoinsManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text coinsText;
 

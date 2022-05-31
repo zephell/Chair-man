@@ -13,7 +13,12 @@ public class SkinManager : MonoBehaviour
         newObj.transform.parent = transform;*/
         EventsManager.OnEquippedSkinUpdated += OnEquippedSkinUpdated;
 
-        if (PlayerPrefs.GetInt("Equipped_Skin_Id") == 0) PlayerPrefs.SetInt("Equipped_Skin_Id", 1);
+        if (PlayerPrefs.GetInt("Equipped_Skin_Id") == 0)
+        {
+            PlayerPrefs.SetString("Bought_Skins_Id", "1");
+            PlayerPrefs.SetInt("Equipped_Skin_Id", 1);
+            PlayerPrefs.Save();
+        }
 
         OnEquippedSkinUpdated(PlayerPrefs.GetInt("Equipped_Skin_Id"));
     }

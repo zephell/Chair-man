@@ -48,8 +48,13 @@ public class SkinItem : MonoBehaviour
         EventsManager.OnBoughtSkinsUpdated -= OnBoughtSkinsUpdated;
     }
 
-    public void OnBoughtSkinsUpdated(string obj) => skinState = !obj.Contains(skinProps.id.ToString()) ?
-        SkinState.NotPurchased : SkinState.Bought;
+    public void OnBoughtSkinsUpdated(string obj)
+    {
+        if (skinState != SkinState.Equipped)
+        {
+            skinState = obj.Contains(skinProps.id.ToString()) ? SkinState.Bought : SkinState.NotPurchased;
+        }
+    }
 
     public void OnEquippedSkinUpdated(int id)
     {
